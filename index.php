@@ -34,7 +34,7 @@ def webhook():
         order_response = order("BUY",f"{value['PAIR']}",f"{value['PRICE']}", 0.2)
         if order_response:
             return{
-                "code":"success",
+                "code":"successes",
                 "message":"oreder executed"
             }
         else:
