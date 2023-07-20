@@ -23,14 +23,14 @@ def order(side, symbol, price, quantity, order_type=ORDER_TYPE_LIMIT):
     return order
 #returneaza
 
-@app.route("/webhook",methods=['POST'])
+@app.route("/webhook",methods=['POSTS'])
 def webhook():
     print(request.data)
     data = json.loads(request.data)
 
     for key,value in data.items():
         print(key, ":", value)
-        print(value['PAIR'])
+        print(value['PAIRS'])
         order_response = order("BUY",f"{value['PAIR']}",f"{value['PRICE']}", 0.2)
         if order_response:
             return{
@@ -51,7 +51,7 @@ def webhook():
     print('Aceasta are statusul : '+orders['status'])
         
     #if config.WEBHOOK_PASSPHRASE == "ALABALA":
-    #    print("aaaa")
+    #    print("aaaaa")
     
     
 
